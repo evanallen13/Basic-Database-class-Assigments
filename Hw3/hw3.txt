@@ -1,0 +1,190 @@
+SQL> /* start C:\Users\evana\Desktop\IS380\hw3.sql */
+SQL> 
+SQL> /* #1 Delete STUDENTS Table */
+SQL> drop table STUDENTS;
+
+Table dropped.
+
+SQL> 
+SQL> /* #2  Create Table */
+SQL> create table STUDENTS(
+  2  	     SNN char(9),
+  3  	     LastName char(10),
+  4  	     FirstName char(10),
+  5  	     Major char(10),
+  6  	     GPA number(3,2),
+  7  	     DOB date,
+  8  	     PRIMARY KEY (SNN));
+
+Table created.
+
+SQL> 
+SQL> /* #3 Insert Records */
+SQL> insert into STUDENTS values ('101','Smith','Johnny','IS',3.41,'18-may-92');
+
+1 row created.
+
+SQL> insert into STUDENTS values ('102','Smith','Jack','FIN',3.25,'11-mar-90');
+
+1 row created.
+
+SQL> insert into STUDENTS values ('103','Meyer','Jim','HRM',2.82,'11-oct-91');
+
+1 row created.
+
+SQL> insert into STUDENTS values ('104','Brown','Jenny','IS',2.78,'4-apr-91');
+
+1 row created.
+
+SQL> 
+SQL> /* #4 display all records of STUDENTS table */
+SQL> SELECT * FROM STUDENTS;
+
+SNN       LASTNAME   FIRSTNAME  MAJOR             GPA DOB                       
+--------- ---------- ---------- ---------- ---------- ---------                 
+101       Smith      Johnny     IS               3.41 18-MAY-92                 
+102       Smith      Jack       FIN              3.25 11-MAR-90                 
+103       Meyer      Jim        HRM              2.82 11-OCT-91                 
+104       Brown      Jenny      IS               2.78 04-APR-91                 
+
+SQL> 
+SQL> /* #5 Insert new Record for Jaime Lee */
+SQL> insert into STUDENTS values ('105','Lee','Jaime',null,null,'1-apr-83');
+
+1 row created.
+
+SQL> 
+SQL> /* #6 Save all changes */
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> /* #7 Display last name and first name of all students */
+SQL> SELECT LastName, FirstName FROM STUDENTS;
+
+LASTNAME   FIRSTNAME                                                            
+---------- ----------                                                           
+Smith      Johnny                                                               
+Smith      Jack                                                                 
+Meyer      Jim                                                                  
+Brown      Jenny                                                                
+Lee        Jaime                                                                
+
+SQL> 
+SQL> /* #8 Display last name and first name of all students who have GPA higher than 3*/
+SQL> SELECT LastName, FirstName FROM STUDENTS
+  2  	     WHERE GPA > 3;
+
+LASTNAME   FIRSTNAME                                                            
+---------- ----------                                                           
+Smith      Johnny                                                               
+Smith      Jack                                                                 
+
+SQL> 
+SQL> /* #9 Display all students who are not IS majors*/
+SQL> SELECT * FROM STUDENTS
+  2  	     WHERE major != 'IS';
+
+SNN       LASTNAME   FIRSTNAME  MAJOR             GPA DOB                       
+--------- ---------- ---------- ---------- ---------- ---------                 
+102       Smith      Jack       FIN              3.25 11-MAR-90                 
+103       Meyer      Jim        HRM              2.82 11-OCT-91                 
+
+SQL> 
+SQL> /* 10 Display students whos fisrt name starts with J and last name starts with S */
+SQL> SELECT * FROM STUDENTS
+  2  	     WHERE FirstName LIKE ('J%')
+  3  	     AND LastName LIKE ('S%');
+
+SNN       LASTNAME   FIRSTNAME  MAJOR             GPA DOB                       
+--------- ---------- ---------- ---------- ---------- ---------                 
+101       Smith      Johnny     IS               3.41 18-MAY-92                 
+102       Smith      Jack       FIN              3.25 11-MAR-90                 
+
+SQL> 
+SQL> /* #11 Change student 101's major to FIN */
+SQL> UPDATE STUDENTS
+  2  	     SET major = 'FIN'
+  3  	     WHERE SNN = 101;
+
+1 row updated.
+
+SQL> 
+SQL> /* #12 Change student 101's major back to IS */
+SQL> UPDATE STUDENTS
+  2  	     SET major = 'IS'
+  3  	     WHERE SNN = 101;
+
+1 row updated.
+
+SQL> 
+SQL> /* #13 Change student 102's Major to MKT and GPA to 3.3 */
+SQL> UPDATE STUDENTS
+  2  	     SET major = 'MKT',
+  3  		     GPA = 3.3
+  4  	     WHERE SNN = 102;
+
+1 row updated.
+
+SQL> 
+SQL> /* #14 Add a column for Associations */
+SQL> alter table
+  2  	     STUDENTS
+  3  	     ADD(ASSOCIATION varchar2(15));
+
+Table altered.
+
+SQL> 
+SQL> /* #15 Set IS students association to ISSA*/
+SQL> UPDATE STUDENTS
+  2  	     SET ASSOCIATION = 'ISSA'
+  3  	     WHERE Major = 'IS';
+
+2 rows updated.
+
+SQL> 
+SQL> /* #16 Delete student 103*/
+SQL> DELETE
+  2  	     FROM STUDENTS
+  3  	     WHERE SNN = 103;
+
+1 row deleted.
+
+SQL> 
+SQL> /* #17 Display Students in order Descending GPA  */
+SQL> SELECT * FROM STUDENTS
+  2  	     ORDER By GPA DESC;
+
+SNN       LASTNAME   FIRSTNAME  MAJOR             GPA DOB       ASSOCIATION     
+--------- ---------- ---------- ---------- ---------- --------- --------------- 
+105       Lee        Jaime                            01-APR-83                 
+101       Smith      Johnny     IS               3.41 18-MAY-92 ISSA            
+102       Smith      Jack       MKT               3.3 11-MAR-90                 
+104       Brown      Jenny      IS               2.78 04-APR-91 ISSA            
+
+SQL> 
+SQL> /* #18 Display students whos major is null*/
+SQL> SELECT * FROM STUDENTS
+  2  	     WHERE major is  null;
+
+SNN       LASTNAME   FIRSTNAME  MAJOR             GPA DOB       ASSOCIATION     
+--------- ---------- ---------- ---------- ---------- --------- --------------- 
+105       Lee        Jaime                            01-APR-83                 
+
+SQL> 
+SQL> /* #19 Ser student 101's major to null*/
+SQL> UPDATE STUDENTS
+  2  	     set major = null
+  3  	     WHERE snn = 101;
+
+1 row updated.
+
+SQL> 
+SQL> /* #20 Save all changes */
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> spool off

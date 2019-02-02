@@ -1,0 +1,62 @@
+SQL> 
+SQL> /* #1 */
+SQL> SELECT enrollments.CNum, courses.Ctitle, enrollments.Grade
+  2  	     FROM students,courses,enrollments
+  3  	     Where SName = 'Andy'
+  4  	     AND students.SNum = enrollments.SNum
+  5  	     AND enrollments.CNum = courses.CNum;
+
+CNUM     CTITLE                    G                                            
+-------- ------------------------- -                                            
+IS380    Database                  B                                            
+IS385    Systems                   A                                            
+
+SQL> 
+SQL> /* #2 */
+SQL> SELECT students.SNum, students.SName
+  2  	     FROM students, enrollments
+  3  	     WHERE enrollments.CNum = 'IS380'
+  4  	     AND students.SNum = enrollments.SNum;
+
+      SNUM SNAME                                                                
+---------- -------------------------                                            
+       101 Andy                                                                 
+       102 Betty                                                                
+
+SQL> 
+SQL> /* #3 */
+SQL> SELECT students.SNum, students.SName
+  2  	     FROM students, enrollments
+  3  	     WHERE enrollments.CNum = 'IS380'
+  4  	     AND enrollments.Grade = 'A'
+  5  	     AND students.SNum = enrollments.SNum;
+
+      SNUM SNAME                                                                
+---------- -------------------------                                            
+       102 Betty                                                                
+
+SQL> 
+SQL> /* #4 */
+SQL> SELECT students.SNum, students.SName
+  2  	     FROM students, enrollments
+  3  	     WHERE students.major = 'IS'
+  4  	     AND enrollments.CNum = 'IS380'
+  5  	     AND students.SNum = enrollments.SNum;
+
+      SNUM SNAME                                                                
+---------- -------------------------                                            
+       101 Andy                                                                 
+
+SQL> 
+SQL> /* #5 */
+SQL> SELECT students.SNum, students.SName
+  2  	     FROM students, enrollments
+  3  	     WHERE major = 'IS'
+  4  	     AND enrollments.CNum = 'IS380'
+  5  	     AND enrollments.Grade = 'A'
+  6  	     ANd students.SNum = enrollments.SNum;
+
+no rows selected
+
+SQL> 
+SQL> spool off

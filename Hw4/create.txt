@@ -1,0 +1,92 @@
+SQL> 
+SQL> drop table enrollments;
+
+Table dropped.
+
+SQL> drop table courses;
+
+Table dropped.
+
+SQL> drop table students;
+
+Table dropped.
+
+SQL> 
+SQL> create table students(
+  2  	     SNum number(3) PRIMARY KEY,
+  3  	     SName varchar(25),
+  4  	     Major varchar(20),
+  5  	     GPA number(3,2));
+
+Table created.
+
+SQL> 
+SQL> create table courses(
+  2  	     CNum varchar(8) PRIMARY KEY,
+  3  	     CTitle varchar(25),
+  4  	     Instr varchar(25));
+
+Table created.
+
+SQL> 
+SQL> create table enrollments(
+  2  	     SNum number(3),
+  3  	     CNum varchar(8),
+  4  	     Grade varchar(1),
+  5  	     PRIMARY KEY (SNum,CNum),
+  6  	     constraint fk_enrollments_SNum foreign key (SNum) references students(SNum),
+  7  	     constraint fk_enrollments_CNum foreign key (CNum) references courses(CNum));
+
+Table created.
+
+SQL> 
+SQL> insert into students values ('101','Andy','IS',3.2);
+
+1 row created.
+
+SQL> insert into students values ('102','Betty','FIN',1.8);
+
+1 row created.
+
+SQL> insert into students values ('103','Cindy','IS',3.8);
+
+1 row created.
+
+SQL> 
+SQL> insert into courses values('IS380','Database','Lee');
+
+1 row created.
+
+SQL> insert into courses values('IS385','Systems','Smith');
+
+1 row created.
+
+SQL> insert into courses values('IS355','Telecomm','Lee');
+
+1 row created.
+
+SQL> 
+SQL> insert into enrollments values('101','IS380','B');
+
+1 row created.
+
+SQL> insert into enrollments values('101','IS385','A');
+
+1 row created.
+
+SQL> insert into enrollments values('102','IS380','A');
+
+1 row created.
+
+SQL> insert into enrollments values('103','IS355','B');
+
+1 row created.
+
+SQL> 
+SQL> update students set SName= 'John'
+  2  	     where SNum = 101;
+
+1 row updated.
+
+SQL> 
+SQL> spool off

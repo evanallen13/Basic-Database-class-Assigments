@@ -1,0 +1,39 @@
+Evan Allen
+
+*_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _*
+*	_ _New Customer Program_ _	*
+*_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _*
+
+Please enter the customer's social security number: 987654321
+Please enter the customer's Last Name: Fett
+Please enter the customer's first Name: Boba 
+Please enter the customer's Middle Name: Skywalker 
+Please enter the customer's Phone Number: 7148762653
+
+*- - -The following record has been updated: - - -*
+
+Social Security Number: 987-65-4321                                             
+                                                                                
+Name: Fett, Boba  S.                                                            
+                                                                                
+Phone: (714)876-2653                                                            
+                              
+
+*_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _*
+*	_ _New Customer Program_ _	*
+*_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _*
+
+Please enter the customer's social security number: 123456789
+Please enter the customer's Last Name: Vader
+Please enter the customer's first Name: Darth
+Please enter the customer's Middle Name: Anakin
+Please enter the customer's Phone Number: 7147658765
+
+*- - -The following record has been updated: - - -*
+
+Social Security Number: 123-45-6789                                             
+                                                                                
+Name: Vader, Darth A.                                                           
+                                                                                
+Phone: (714)765-8765            
+
